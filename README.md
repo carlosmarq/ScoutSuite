@@ -20,7 +20,7 @@ Based on
 https://github.com/nccgroup/ScoutSuite/pull/1386/commits/0d47bbaff5d4610a9b9c7be0daf8d42b01837c69
 created by @MaxNad 
 
-Thanks to all people that contribute to this project.
+Thanks to all people that contributed to this project.
 
 ## Description
 
