@@ -10,9 +10,6 @@ from ScoutSuite.providers.azure.resources.storageaccounts.base import StorageAcc
 from ScoutSuite.providers.azure.resources.virtualmachines.base import VirtualMachines
 from ScoutSuite.providers.base.services import BaseServicesConfig
 from ScoutSuite.providers.azure.resources.appservice.base import AppServices
-from ScoutSuite.providers.azure.resources.mysqldatabase.base import MySQLServers
-from ScoutSuite.providers.azure.resources.postgresqldatabase.base import PostgreSQLServers
-from ScoutSuite.providers.azure.resources.loggingmonitoring.base import LoggingMonitoring
 
 # Try to import proprietary services
 try:
@@ -44,31 +41,31 @@ class AzureServicesConfig(BaseServicesConfig):
                              programmatic_execution)
 
         self.aad = AAD(facade)
-        self.rbac = RBAC(facade)
-        self.securitycenter = SecurityCenter(facade)
-        self.sqldatabase = Servers(facade)
-        self.storageaccounts = StorageAccounts(facade)
-        self.keyvault = KeyVaults(facade)
-        self.network = Networks(facade)
-        self.virtualmachines = VirtualMachines(facade)
-        self.appservice = AppServices(facade)
-        self.mysqldatabase = MySQLServers(facade)
-        self.postgresqldatabase = PostgreSQLServers(facade)
-        self.loggingmonitoring = LoggingMonitoring(facade)
 
-        # Instantiate proprietary services
-        try:
-            self.appgateway = ApplicationGateways(facade)
-        except NameError as _:
-            pass
-        try:
-            self.loadbalancer = LoadBalancers(facade)
-        except NameError as _:
-            pass
-        try:
-            self.rediscache = RedisCaches(facade)
-        except NameError as _:
-            pass
+        # Currently, only AAD can be used without any subscriptions 
+        if len(subscription_ids) > 0:
+            self.rbac = RBAC(facade)
+            self.securitycenter = SecurityCenter(facade)
+            self.sqldatabase = Servers(facade)
+            self.storageaccounts = StorageAccounts(facade)
+            self.keyvault = KeyVaults(facade)
+            self.network = Networks(facade)
+            self.virtualmachines = VirtualMachines(facade)
+            self.appservice = AppServices(facade)
+
+            # Instantiate proprietary services
+            try:
+                self.appgateway = ApplicationGateways(facade)
+            except NameError as _:
+                pass
+            try:
+                self.loadbalancer = LoadBalancers(facade)
+            except NameError as _:
+                pass
+            try:
+                self.rediscache = RedisCaches(facade)
+            except NameError as _:
+                pass
 
     def _is_provider(self, provider_name):
         return provider_name == 'azure'
@@ -82,3 +79,4 @@ class AzureServicesConfig(BaseServicesConfig):
         if 'rbac' in services and 'aad' in services:
             user_list = self.rbac.get_user_id_list()
             await self.aad.fetch_additional_users(user_list)
+
