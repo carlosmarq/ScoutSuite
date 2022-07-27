@@ -12,6 +12,16 @@
 [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-rossja%2Fncc--scoutsuite-blue)](https://hub.docker.com/r/rossja/ncc-scoutsuite/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/rossja/ncc-scoutsuite.svg?style=flat-square)](https://hub.docker.com/r/rossja/ncc-scoutsuite/)
 
+## How to use this repo?
+
+Use Delvelp branch (that fixes Azure API modifications at July 2022) and perform AD domains without requiring a subcription (Issue#1386) .
+
+Based on
+https://github.com/nccgroup/ScoutSuite/pull/1386/commits/0d47bbaff5d4610a9b9c7be0daf8d42b01837c69
+created by @MaxNad 
+
+Thanks to all people that contribute to this project.
+
 ## Description
 
 Scout Suite is an open source multi-cloud security-auditing tool, which enables security posture assessment of cloud environments. Using the APIs exposed by cloud providers, Scout Suite gathers configuration data for manual inspection and highlights risk areas. Rather than going through dozens of pages on the web consoles, Scout Suite presents a clear view of the attack surface automatically.
