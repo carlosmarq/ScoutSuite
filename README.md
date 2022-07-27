@@ -14,7 +14,7 @@
 
 ## How to use this repo?
 
-Use Delvelp branch (that fixes Azure API modifications at July 2022) and perform AD domains without requiring a subcription (Issue#1386) .
+Use Delvelop branch (that fixes Azure API modifications at July 2022) and perform AD domains without requiring a subcription (Issue#1386) .
 
 Based on
 https://github.com/nccgroup/ScoutSuite/pull/1386/commits/0d47bbaff5d4610a9b9c7be0daf8d42b01837c69
